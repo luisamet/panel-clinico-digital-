@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Formulario de Apelación · GMD Digital</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700&display=swap">
+  <style>
+    body {
+      background: #fff;
+      font-family: 'Montserrat', Arial, sans-serif;
+      margin: 0;
+      color: #212851;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+    .container {
+      max-width: 650px;
+      margin: 30px auto 20px auto;
+      background: #f4f7fb;
+      border-radius: 18px;
+      box-shadow: 0 6px 36px rgba(50,100,255,0.08);
+      padding: 35px 25px 15px 25px;
+    }
+    .logo-top {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin-bottom: 5px;
+    }
+    .logo-top img {
+      width: 140px;
+      height: auto;
+      margin-bottom: 5px;
+      border-radius: 16px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+    }
+    h1 {
+      text-align: center;
+      color: #2360e8;
+      font-weight: 700;
+      margin-top: 8px;
+      margin-bottom: 8px;
+      font-size: 2.3em;
+    }
+    .subtitle {
+      text-align: center;
+      color: #6c789a;
+      font-size: 1.07em;
+      margin-bottom: 22px;
+      margin-top: 0;
+    }
+    label {
+      font-weight: 600;
+      color: #212851;
+      margin-bottom: 2px;
+      display: block;
+    }
+    input, select, textarea {
+      box-sizing: border-box;
+      width: 100%;
+      padding: 10px 12px;
+      margin-bottom: 14px;
+      border: 1.5px solid #d6dff7;
+      border-radius: 8px;
+      font-size: 1em;
+      background: #fff;
+      font-family: 'Montserrat', Arial, sans-serif;
+    }
+    textarea {
+      min-height: 46px;
+      resize: vertical;
+    }
+    fieldset {
+      border: none;
+      margin-bottom: 15px;
+      background: #e9f2fe;
+      border-radius: 14px;
+      padding: 18px 14px 12px 14px;
+    }
+    legend {
+      font-size: 1.3em;
+      font-weight: 700;
+      color: #2360e8;
+      margin-bottom: 12px;
+    }
+    .boton-main, .boton-whatsapp {
+      width: 98%;
+      display: block;
+      margin: 13px auto 0 auto;
+      padding: 13px;
+      font-size: 1.13em;
+      border-radius: 11px;
+      border: none;
+      font-weight: 700;
+      letter-spacing: 0.5px;
+      transition: all 0.2s;
+      cursor: pointer;
+    }
+    .boton-main {
+      background: linear-gradient(90deg,#2360e8 30%,#408dff 100%);
+      color: #fff;
+      box-shadow: 0 2px 8px rgba(50, 100, 255, 0.09);
+      margin-bottom: 8px;
+    }
+    .boton-main:hover {
+      background: linear-gradient(90deg,#2153b5 20%,#408dff 100%);
+      box-shadow: 0 4px 18px rgba(60, 80, 200, 0.11);
+      transform: translateY(-2px);
+    }
+    .boton-whatsapp {
+      background: #25d366;
+      color: #fff;
+      margin-bottom: 16px;
+      display: none;
+    }
+    .boton-whatsapp:hover {
+        background: #22c25c;
+        box-shadow: 0 4px 18px rgba(30, 150, 60, 0.15);
+        transform: translateY(-2px);
+    }
+    .tabs {
+      margin-top: 28px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      justify-content: center;
+    }
+    .tab {
+      padding: 7px 18px;
+      border-radius: 9px 9px 0 0;
+      background: #e6f1fd;
+      color: #2360e8;
+      font-weight: 700;
+      cursor: pointer;
+      border: none;
+      outline: none;
+      font-size: 1em;
+      transition: background 0.2s, color 0.2s;
+      border-bottom: 2.5px solid transparent;
+    }
+    .tab.active {
+      background: #fff;
+      border-bottom: 2.5px solid #2360e8;
+      color: #222;
+    }
+    .tab-content {
+      background: #fff;
+      border-radius: 0 0 14px 14px;
+      box-shadow: 0 2px 10px rgba(50,100,255,0.05);
+      margin-top: 0;
+      padding: 22px 22px 10px 22px;
+      display: none;
+      border: 1px solid #eef2f8;
+      border-top: none;
+    }
+    .tab-content.active {
+      display: block;
+      animation: fadeIn 0.7s;
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(25px);}
+      to { opacity: 1; transform: translateY(0);}
+    }
+    .footer {
+      background: #eaf1fa;
+      color: #345;
+      font-size: 0.99em;
+      text-align: center;
+      padding: 17px 7px 10px 7px;
+      margin-top: auto;
+    }
+    .footer a {
+      color: #2360e8;
+      text-decoration: underline;
+      font-weight: 700;
+    }
+    .footer-lema {
+      display: block;
+      font-size: 1.06em;
+      color: #4a5ba3;
+      margin-top: 6px;
+      font-style: italic;
+      font-weight: 600;
+    }
+    .mensaje-exito {
+      display: none;
+      text-align: center;
+      color: #22a465;
+      font-weight: 700;
+      margin-bottom: 12px;
+      font-size: 1.12em;
+      letter-spacing: 0.5px;
+      background: #e8f9f1;
+      padding: 10px;
+      border-radius: 8px;
+      border: 1px solid #ccebdc;
+    }
+    @media (max-width: 700px) {
+      .container { max-width: 100%; margin: 10px 0; border-radius: 0;}
+      .logo-top img { width: 100px;}
+      .footer { font-size: 0.91em;}
+      h1 { font-size: 1.8em;}
+      .tab { font-size: 0.9em; padding: 8px 12px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="logo-top">
+    <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjT-H_gQd8g2ZzRkLpY4eJ_6q4H-k6G5rX3rV6Zz1f7x2w3i5o3n4m1w2j_8j4f4J7y6z7w2x2X2f7g2g1H4w3f2D3a1k3j1j3h3l/s1600/logo-gmd.png" alt="Logo GMD Digital" />
+  </div>
+  <div class="container">
+    <h1>Formulario de Apelación</h1>
+    <div class="subtitle">Gestiona tus documentos clínicos de apelación en un solo paso</div>
+    <div id="mensajeExito" class="mensaje-exito">✅ Documentos generados correctamente.</div>
+    <form id="form-ape" novalidate>
+      <fieldset>
+        <legend>1. Datos del Paciente</legend>
+        <label for="nombre">Nombre completo *</label>
+        <input type="text" id="nombre" name="nombre" required>
+        <label for="rut">RUT *</label>
+        <input type="text" id="rut" name="rut" required>
+        <label for="edad">Edad *</label>
+        <input type="number" id="edad" name="edad" required>
+        <label for="telefono">Teléfono de contacto</label>
+        <input type="tel" id="telefono" name="telefono">
+        <label for="correo">Correo electrónico</label>
+        <input type="email" id="correo" name="correo">
+      </fieldset>
+      <fieldset>
+        <legend>2. Información de la Licencia</legend>
+        <label for="folio">N° de folio de la licencia</label>
+        <input type="text" id="folio" name="folio">
+        <label for="dias">Duración (días)</label>
+        <input type="number" id="dias" name="dias">
+        <label for="medico">¿Quién emitió la licencia? (Médico)</label>
+        <input type="text" id="medico" name="medico">
+        <label for="centro">Centro o institución donde fue atendido</label>
+        <input type="text" id="centro" name="centro">
+      </fieldset>
+      <fieldset>
+        <legend>3. Motivos para Apelar</legend>
+        <label for="rechazo">¿Recibió notificación de rechazo?</label>
+        <select id="rechazo" name="rechazo">
+          <option value="">Seleccione...</option>
+          <option>Sí</option>
+          <option>No</option>
+        </select>
+        <label for="motivo_rechazo">Motivo del rechazo</label>
+        <select id="motivo_rechazo" name="motivo_rechazo">
+          <option value="">Seleccione...</option>
+          <option value="Falta de documentación">Falta de documentación</option>
+          <option value="Informe incompleto">Informe incompleto</option>
+          <option value="Reposo injustificado">Reposo injustificado</option>
+          <option value="Otro">Otro</option>
+        </select>
+        <label for="gaf">Escala GAF</label>
+        <input type="text" id="gaf" name="gaf">
+        <label for="evolucion">¿Cómo ha evolucionado desde la licencia?</label>
+        <textarea id="evolucion" name="evolucion"></textarea>
+        <label for="tratamiento">¿Recibe tratamiento actualmente? ¿Dónde?</label>
+        <textarea id="tratamiento" name="tratamiento"></textarea>
+        <label for="ges">Derivación GES</label>
+        <input type="text" id="ges" name="ges">
+      </fieldset>
+      <fieldset>
+        <legend>4. Adjuntar Documentos</legend>
+        <label for="docs_adj">Licencias anteriores, epicrisis, exámenes, etc. (solo listado)</label>
+        <input type="text" id="docs_adj" name="docs_adj">
+        <label for="comentarios">Agregar comentarios</label>
+        <textarea id="comentarios" name="comentarios"></textarea>
+      </fieldset>
+      <div>
+        <input type="checkbox" id="consent" required>
+        <label for="consent" style="display:inline; font-weight:400;">Autorizo el uso de esta información con fines exclusivamente médicos, para la elaboración de un informe clínico de apelación ante COMPIN/SUSESO.</label>
+      </div>
+      <button type="button" class="boton-main" id="generarBtn">📄 Generar Documentos</button>
+      <button type="button" class="boton-whatsapp" id="whatsappBtn">🟢 Enviar por WhatsApp</button>
+    </form>
+    <div id="tabs-docs" style="display:none;">
+      <div class="tabs" id="tabs">
+        <button class="tab active" data-tab="carta">Carta de Apelación</button>
+        <button class="tab" data-tab="receta">Receta</button>
+        <button class="tab" data-tab="comprobante">Comprobante Atención</button>
+        <button class="tab" data-tab="certificado">Certificado Terapia</button>
+        <button class="tab" data-tab="informe">Informe Médico</button>
+      </div>
+      <div id="carta" class="tab-content active"></div>
+      <div id="receta" class="tab-content"></div>
+      <div id="comprobante" class="tab-content"></div>
+      <div id="certificado" class="tab-content"></div>
+      <div id="informe" class="tab-content"></div>
+    </div>
+  </div>
+  <div class="footer">
+    Sistema Clínico Digital - Todos los derechos reservados · GMD<br>
+    Correo electrónico: <a href="mailto:gestionmeddigital@gmail.com">gestionmeddigital@gmail.com</a>
+    <span class="footer-lema">Mente Clínica, Corazón Digital</span>
+  </div>
+
+<script>
+  // Manejo de pestañas (Tabs)
+  document.querySelectorAll('.tab').forEach(tab => {
+    tab.addEventListener('click', function() {
+      document.querySelectorAll('.tab').forEach(btn => btn.classList.remove('active'));
+      this.classList.add('active');
+      document.querySelectorAll('.tab-content').forEach(cont => cont.classList.remove('active'));
+      document.getElementById(this.dataset.tab).classList.add('active');
+    });
+  });
+
+  // Generar documentos
+  document.getElementById('generarBtn').onclick = function() {
+    if (!document.getElementById('consent').checked) {
+      alert('Debe autorizar el uso de la información para poder generar los documentos.');
+      return;
+    }
+    
+    const form = document.getElementById('form-ape');
+    if (!form.checkValidity()) {
+      alert('Por favor, complete todos los campos obligatorios (*) antes de generar los documentos.');
+      form.reportValidity(); // Muestra visualmente qué campos faltan
+      return;
+    }
+
+    const f = form.elements;
+    const data = {
+      nombre: f['nombre'].value || 'No informado',
+      rut: f['rut'].value || 'No informado',
+      edad: f['edad'].value || 'No informada',
+      telefono: f['telefono'].value || 'No informado',
+      correo: f['correo'].value || 'No informado',
+      folio: f['folio'].value || 'No informado',
+      dias: f['dias'].value || 'No informados',
+      medico: f['medico'].value || 'No informado',
+      centro: f['centro'].value || 'No informado',
+      rechazo: f['rechazo'].value || 'No informado',
+      motivo_rechazo: f['motivo_rechazo'].value || 'No informado',
+      gaf: f['gaf'].value || 'No informado',
+      evolucion: f['evolucion'].value || 'No informada',
+      tratamiento: f['tratamiento'].value || 'No informado',
+      ges: f['ges'].value || 'No informado',
+      docs_adj: f['docs_adj'].value || 'No informados',
+      comentarios: f['comentarios'].value || 'Sin comentarios'
+    };
+    const fechaActual = new Date().toLocaleDateString('es-CL');
+
+    // Plantillas clínicas
+    document.getElementById('carta').innerHTML = `<h2 style="color:#2360e8;">Carta de Apelación</h2><b>Paciente:</b> ${data.nombre}<br><b>RUT:</b> ${data.rut}<br><b>Edad:</b> ${data.edad}<br><b>Teléfono:</b> ${data.telefono}<br><b>Correo:</b> ${data.correo}<br><br><b>Licencia Folio:</b> ${data.folio}<br><b>Centro Emisor:</b> ${data.centro}<br><b>Médico Tratante:</b> ${data.medico}<br><b>Duración:</b> ${data.dias} días<br><br><b>Motivo de la Apelación:</b> Licencia rechazada<br><b>Causal de Rechazo:</b> ${data.motivo_rechazo}<br><b>Evolución Clínica:</b> ${data.evolucion}<br><b>Tratamiento Actual:</b> ${data.tratamiento}<br><b>Derivación GES:</b> ${data.ges}<br><b>Escala GAF:</b> ${data.gaf}<br><br><b>Documentos adjuntos (listado):</b> ${data.docs_adj}<br><b>Comentarios:</b> ${data.comentarios}<br><p style="font-size:0.93em;color:#666;margin-top:12px;">Se autoriza el uso de esta información para fines exclusivamente médicos ante COMPIN/SUSESO.</p>`;
+    
+    document.getElementById('receta').innerHTML = `<h2 style="color:#2360e8;">Receta Médica Referencial</h2><b>Paciente:</b> ${data.nombre}<br><b>RUT:</b> ${data.rut}<br><b>Edad:</b> ${data.edad}<br><b>Fecha:</b> ${fechaActual}<br><br><b>Indicación:</b> _____________________<br><b>Dosificación:</b> _____________________<br><b>Cantidad:</b> _____________________<br><br><p style="font-size:0.93em;color:#666;margin-top:12px;">Esta receta es solo referencial y no constituye un documento legal para la dispensación de medicamentos.</p>`;
+
+    document.getElementById('comprobante').innerHTML = `<h2 style="color:#2360e8;">Comprobante de Atención</h2><b>Paciente:</b> ${data.nombre}<br><b>RUT:</b> ${data.rut}<br><b>Centro de Atención:</b> ${data.centro}<br><b>Fecha de Emisión:</b> ${fechaActual}<br><p style="font-size:0.93em;color:#666;margin-top:12px;">Constancia automática emitida por el sistema de Gestión Médica Digital.</p>`;
+
+    document.getElementById('certificado').innerHTML = `<h2 style="color:#7a3fff;">Certificado de Terapia Psicológica</h2>Se certifica que el paciente <b>${data.nombre}</b>, RUT <b>${data.rut}</b>, se encuentra en proceso de terapia psicológica.<br><br><b>Detalles del Tratamiento:</b> ${data.tratamiento}<br><b>Derivación GES:</b> ${data.ges}<br><b>Fecha de Emisión:</b> ${fechaActual}<br>`;
+    
+    document.getElementById('informe').innerHTML = `<h2 style="color:#25a3c8;">Informe Médico Protocolizado</h2><b>Paciente:</b> ${data.nombre}<br><b>RUT:</b> ${data.rut}<br><b>Edad:</b> ${data.edad}<br><hr style="border:0; border-top:1px solid #eee; margin:8px 0;"><b>Centro de Atención:</b> ${data.centro}<br><b>Médico Tratante:</b> ${data.medico}<br><b>Fecha de Emisión:</b> ${fechaActual}<br><hr style="border:0; border-top:1px solid #eee; margin:8px 0;"><b>Resumen Clínico y Evolución:</b><br>${data.evolucion}<br><br><b>Escala GAF (si aplica):</b> ${data.gaf}<br><b>Derivación GES (si aplica):</b> ${data.ges}<br><br><b>Documentos adjuntos (listado):</b><br>${data.docs_adj}<br><br><b>Comentarios Adicionales:</b><br>${data.comentarios}`;
+    
+    // Muestra el mensaje de éxito
+    document.getElementById('mensajeExito').style.display = "block";
+    // Muestra los resultados y el botón de WhatsApp
+    document.getElementById('tabs-docs').style.display = "block";
+    document.getElementById('whatsappBtn').style.display = "block";
+    
+    // Desplaza la vista hacia los resultados generados
+    window.scrollTo({ top: document.getElementById('mensajeExito').offsetTop - 20, behavior: "smooth" });
+  };
+
+  // Enviar por WhatsApp
+  document.getElementById('whatsappBtn').onclick = function() {
+    const cartaContenido = document.getElementById('carta').innerText;
+    const telWhats = "56991809182"; // Tu número en formato internacional sin '+' ni espacios
+    const texto = encodeURIComponent("👨‍⚕️ *Informe de Apelación Generado*\n\n" + cartaContenido);
+    window.open(`https://api.whatsapp.com/send?phone=${telWhats}&text=${texto}`, '_blank');
+  };
+</script>
+</body>
+</html>
